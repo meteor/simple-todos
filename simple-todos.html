@@ -3,48 +3,34 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container" ng-controller="todoList">
     <header>
-      <h1>Todo List ({{incompleteCount}})</h1>
+      <h1>Todo List ([[incompleteCount()]])</h1>
 
       <label class="hide-completed">
-        <input type="checkbox" checked="{{hideCompleted}}" />
+        <input type="checkbox" ng-model="hideCompleted" />
         Hide Completed Tasks
       </label>
 
       {{> loginButtons}}
 
-      {{#if currentUser}}
-        <form class="new-task">
-          <input type="text" name="text" placeholder="Type to add new tasks" />
-        </form>
-      {{/if}}
+    <form class="new-task" ng-submit="addTask()" ng-if="loggedIn()">
+      <input type="text" ng-model="model.newTodoText" placeholder="Type to add new tasks" />
+    </form>
+
     </header>
 
     <ul>
-      {{#each tasks}}
-        {{> task}}
-      {{/each}}
+        <li ng-class="{checked: (task.checked == true), private: (task.private)}" ng-repeat="task in filteredTasks()">
+            <button class="delete" ng-click="deleteTask(task)">&times;</button>
+
+            <input type="checkbox" ng-model="task.checked" class="toggle-checked" ng-change="toggleChecked(task)" />
+
+            <button class="toggle-private" ng-if="isOwner(task)" ng-click="togglePrivate(task)">
+              [[ privateStatus(task) ]]
+            </button>
+            <span class="text"><strong>[[task.username]]</strong> - [[task.text]]</span>
+        </li>
     </ul>
   </div>
 </body>
-
-<template name="task">
-  <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
-    <button class="delete">&times;</button>
-
-    <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
-
-    {{#if isOwner}}
-      <button class="toggle-private">
-        {{#if private}}
-          Private    
-        {{else}}
-          Public
-        {{/if}}
-      </button>
-    {{/if}}
-
-    <span class="text"><strong>{{username}}</strong> - {{text}}</span>
-  </li>
-</template>
