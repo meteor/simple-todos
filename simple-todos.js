@@ -72,7 +72,7 @@ Meteor.methods({
     }
 
     Tasks.insert({
-      text: text,
+      title: text,
       createdAt: new Date(),
       owner: Meteor.userId(),
       username: Meteor.user().username
