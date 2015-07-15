@@ -5,6 +5,5 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
 accounts-ui
 accounts-password
