@@ -29,12 +29,7 @@ if (Meteor.isClient) {
       var text = event.target.text.value;
 
       // Insert a task into the collection
-      Tasks.insert({
-        text: text,
-        createdAt: new Date(),            // current time
-        owner: Meteor.userId(),           // _id of logged in user
-        username: Meteor.user().username  // username of logged in user
-      });
+      Meteor.call("addTask", text);
 
       // Clear form
       event.target.text.value = "";
