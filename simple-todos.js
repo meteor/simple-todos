@@ -36,7 +36,7 @@ if (Meteor.isClient) {
   });
 
   Template.body.events({
-    "submit .new-task": function (event) {
+    "submit.new-task": function (event) {
       // Prevent default browser form submit
       event.preventDefault();
 
