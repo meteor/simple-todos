@@ -41,13 +41,13 @@ if (Meteor.isClient) {
       event.preventDefault();
 
       // Get value from form element
-      var text = event.target.text.value;
+      var text = event.target.task.value;
 
       // Insert a task into the collection
       Meteor.call("addTask", text);
 
       // Clear form
-      event.target.text.value = "";
+      event.target.task.value = "";
     },
     "change .hide-completed input": function (event) {
       Session.set("hideCompleted", event.target.checked);
