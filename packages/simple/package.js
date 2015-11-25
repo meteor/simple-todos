@@ -10,12 +10,16 @@ Package.describe({
   documentation: 'README.md'
 });
 
+Npm.depends({
+    'api-javascript': '0.5.13',
+})
+
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
 
   // Server only
   api.addFiles([
-        'lib/server/db.js', 
+        'lib/server/db.js',
   ], 'server');
 
   api.addFiles('simple.js');
