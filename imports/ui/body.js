@@ -1,17 +1,20 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Tasks } from '../api/tasks.js';
 import './body.html';
 import './task.js';
 
-Template.body.onCreated(function() {
+Template.body.onCreated(function bodyOnCreated() {
   Meteor.subscribe("tasks");
+  this.state = new ReactiveDict();
 });
 
 Template.body.helpers({
   tasks: function () {
-    if (Session.get("hideCompleted")) {
+    const instance = Template.instance();
+    if (instance.state.get("hideCompleted")) {
       // If hide completed is checked, filter tasks
       return Tasks.find({checked: {$ne: true}}, {sort: {createdAt: -1}});
     } else {
@@ -20,7 +23,8 @@ Template.body.helpers({
     }
   },
   hideCompleted: function () {
-    return Session.get("hideCompleted");
+    const instance = Template.instance();
+    return instance.state.get("hideCompleted");
   },
   incompleteCount: function () {
     return Tasks.find({checked: {$ne: true}}).count();
@@ -41,7 +45,7 @@ Template.body.events({
     // Clear form
     event.target.text.value = "";
   },
-  "change .hide-completed input": function (event) {
-    Session.set("hideCompleted", event.target.checked);
+  "change .hide-completed input": function (event, instance) {
+    instance.state.set("hideCompleted", event.target.checked);
   }
 });
