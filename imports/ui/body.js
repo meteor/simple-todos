@@ -7,45 +7,45 @@ import './body.html';
 import './task.js';
 
 Template.body.onCreated(function bodyOnCreated() {
-  Meteor.subscribe("tasks");
   this.state = new ReactiveDict();
+  Meteor.subscribe('tasks');
 });
 
 Template.body.helpers({
-  tasks: function () {
+  tasks() {
     const instance = Template.instance();
-    if (instance.state.get("hideCompleted")) {
+    if (instance.state.get('hideCompleted')) {
       // If hide completed is checked, filter tasks
-      return Tasks.find({checked: {$ne: true}}, {sort: {createdAt: -1}});
-    } else {
-      // Otherwise, return all of the tasks
-      return Tasks.find({}, {sort: {createdAt: -1}});
+      return Tasks.find({ checked: { $ne: true } }, { sort: { createdAt: -1 } });
     }
+    // Otherwise, return all of the tasks
+    return Tasks.find({}, { sort: { createdAt: -1 } });
   },
-  hideCompleted: function () {
+  hideCompleted() {
     const instance = Template.instance();
-    return instance.state.get("hideCompleted");
+    return instance.state.get('hideCompleted');
   },
-  incompleteCount: function () {
-    return Tasks.find({checked: {$ne: true}}).count();
-  }
+  incompleteCount() {
+    return Tasks.find({ checked: { $ne: true } }).count();
+  },
 });
 
 Template.body.events({
-  "submit .new-task": function (event) {
+  'submit .new-task'(event) {
     // Prevent default browser form submit
     event.preventDefault();
 
     // Get value from form element
-    var text = event.target.text.value;
+    const target = event.target;
+    const text = target.text.value;
 
     // Insert a task into the collection
-    Meteor.call("addTask", text);
+    Meteor.call('addTask', text);
 
     // Clear form
-    event.target.text.value = "";
+    target.text.value = '';
   },
-  "change .hide-completed input": function (event, instance) {
-    instance.state.set("hideCompleted", event.target.checked);
-  }
+  'change .hide-completed input'(event, instance) {
+    instance.state.set('hideCompleted', event.target.checked);
+  },
 });
