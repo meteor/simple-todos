@@ -20,3 +20,4 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 reactive-dict
 accounts-ui
 accounts-password
+practicalmeteor:mocha@2.1.1-rc.1
