@@ -3,8 +3,9 @@ import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Tasks } from '../api/tasks.js';
-import './body.html';
+
 import './task.js';
+import './body.html';
 
 Template.body.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
@@ -40,7 +41,7 @@ Template.body.events({
     const text = target.text.value;
 
     // Insert a task into the collection
-    Meteor.call('addTask', text);
+    Meteor.call('tasks.insert', text);
 
     // Clear form
     target.text.value = '';
