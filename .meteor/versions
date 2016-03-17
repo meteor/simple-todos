@@ -16,6 +16,7 @@ caching-compiler@1.0.2-rc.2
 caching-html-compiler@1.0.4-rc.2
 callback-hook@1.0.6-rc.2
 check@1.1.2-rc.2
+coffeescript@1.0.15-rc.2
 ddp@1.2.3-rc.2
 ddp-client@1.2.3-rc.2
 ddp-common@1.2.3-rc.2
@@ -56,6 +57,11 @@ npm-bcrypt@0.7.8_2
 npm-mongo@1.4.41-rc.2
 observe-sequence@1.0.9-rc.2
 ordered-dict@1.0.5-rc.2
+practicalmeteor:chai@2.1.0_1
+practicalmeteor:loglevel@1.2.0_2
+practicalmeteor:mocha@2.1.1-rc.1
+practicalmeteor:mocha-core@0.1.4
+practicalmeteor:sinon@1.14.1_2
 promise@0.6.4-rc.2
 random@1.0.7-rc.2
 rate-limit@1.0.2-rc.2
@@ -74,6 +80,7 @@ standard-minifier-css@1.0.4-rc.2
 standard-minifier-js@1.0.4-rc.2
 templating@1.1.7-rc.2
 templating-tools@1.0.2-rc.2
+tmeasday:test-reporter-helpers@0.2.1
 tracker@1.0.11-rc.2
 ui@1.0.9-rc.2
 underscore@1.0.6-rc.2
