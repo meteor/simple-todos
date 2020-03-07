@@ -20,7 +20,6 @@ typescript@3.7.5              # Enable TypeScript syntax in .ts and .tsx modules
 shell-server@0.4.0            # Server-side component of the `meteor shell` command
 
 autopublish@1.0.7             # Publish all data to the clients (for prototyping)
-insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
 reactive-dict
 accounts-ui
 accounts-password
