@@ -1,11 +1,7 @@
-# Simple Todo List
+#Simple Todo List (archived)
 
-The Meteor Tutorial app.
+The new Blaze Tutorial lives here https://github.com/meteor/blaze-tutorial/
 
-Use it to share a single todo list with your friends. The list updates on everyone's screen in real time, and you can make tasks private if you don't want others to see them.
+Any PRs or issues should be created there now.
 
-Learn how to build this app by following the [Meteor Tutorial](http://www.meteor.com/install).
-
-Read more about building apps with Meteor in the [Meteor Guide](http://guide.meteor.com).
-
-![screenshot](screenshot.png)
+You can check the tutorial here https://blaze-tutorial.meteor.com/
