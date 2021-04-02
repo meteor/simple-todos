@@ -1,4 +1,4 @@
-#Simple Todo List (archived)
+# Simple Todo List (archived)
 
 The new Blaze Tutorial lives here https://github.com/meteor/blaze-tutorial/
 
